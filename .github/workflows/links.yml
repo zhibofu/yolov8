@@ -27,6 +27,9 @@ jobs:
           tar xzf lychee.tar.gz
           sudo mv lychee /usr/local/bin
 
+          # Copy /en to root 
+          cp -r ./docs/en/* ./docs
+
       - name: Test Markdown and HTML links with retry
         uses: nick-invision/retry@v2
         with:
@@ -38,7 +41,7 @@ jobs:
             --exclude-loopback \
             --exclude 'https?://(www\.)?(linkedin\.com|twitter\.com|instagram\.com|kaggle\.com|fonts\.gstatic\.com|url\.com)' \
             --exclude-path docs/zh \
-            --exclude-path docs/es \
+            # --exclude-path docs/es \
             --exclude-path docs/ru \
             --exclude-path docs/pt \
             --exclude-path docs/fr \
@@ -64,7 +67,7 @@ jobs:
             --exclude 'https?://(www\.)?(linkedin\.com|twitter\.com|instagram\.com|kaggle\.com|fonts\.gstatic\.com|url\.com)' \
             --exclude-path '**/ci.yaml' \
             --exclude-path docs/zh \
-            --exclude-path docs/es \
+            # --exclude-path docs/es \
             --exclude-path docs/ru \
             --exclude-path docs/pt \
             --exclude-path docs/fr \
